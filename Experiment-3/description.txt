@@ -1,0 +1,130 @@
+ADMIN DASHBOARD PROJECT TEST CASES & VALIDATIONS
+
+1. FEATURE: Theme Toggle (Light/Dark Mode)
+  
+Requirement:
+Clicking the "Dark mode" label toggles the dashboard theme between light and dark.
+Implemented using a hidden checkbox (#theme-toggle) linked to a CSS selector.
+  
+Valid Test Cases:
+Click once: Dashboard switches to dark mode with dark backgrounds and light text.
+Click again: Dashboard reverts to light mode with default styles.
+
+Invalid Test Cases:
+Not clickable? If label is not properly linked to checkbox via for attribute → toggle fails.
+Broken styling: If CSS dark mode selectors (#theme-toggle:checked ~ .dashboard-container) are missing → visual change won't occur.
+
+2. FEATURE: Navigation Sidebar Links
+
+Requirement:
+Sidebar contains working navigation links for Home, Users, and Settings.
+Links must be visually distinct and clickable.
+
+Valid Test Cases:
+Click "Home" → navigates to Home page or placeholder.
+Click "Users" → navigates to Users section.
+Click "Settings" → navigates to Settings section.
+
+Invalid Test Cases:
+Link is missing href → click does nothing.
+Wrong color contrast in dark mode → text hard to read.
+
+3. FEATURE: Responsive Layout (Grid Design)
+
+Requirement:
+Dashboard layout should remain intact with header, sidebar, main content, and footer areas defined in CSS Grid.
+
+Valid Test Cases:
+On desktop → sidebar fixed on left, main content on right, header on top, footer on bottom.
+On smaller screens → grid adapts without breaking text alignment.
+
+Invalid Test Cases:
+Elements overlapping on resize → incorrect grid setup.
+Missing grid-template-areas naming → layout breaks.
+
+4. FORM SUBMISSION: (Not applicable — No forms in this project)
+
+CSS STYLING BREAKDOWN: A STRUCTURED OVERVIEW
+  
+1. ELEMENT: body (Global Page Styling)
+
+Purpose: Defines the base font styling for the page.
+
+Properties & Effects:
+font-family: Arial, sans-serif; → Sets clean, readable text across dashboard.
+
+2. ELEMENT: .dashboard-container (Main Wrapper)
+
+Purpose: Contains and positions the dashboard elements along with the theme toggle.
+
+Property: position: relative; → Allows absolutely positioned toggle button to align correctly inside container.
+
+3. ELEMENT: .toggle (Theme Toggle Button)
+
+Purpose: Clickable label to switch between light and dark modes.
+
+Properties & Effects:
+Positioned absolutely (top: 10px; right: 20px;) for easy access.
+White background with padding and rounded corners for visibility.
+cursor: pointer; makes it interactive.
+
+4. ELEMENT: .dashboard (Main Grid Layout)
+
+Purpose: Organizes header, sidebar, main content, and footer using CSS Grid.
+
+Properties & Effects:
+display: grid; with grid-template-areas for structured placement.
+Fixed sidebar width (200px) and flexible main area (1fr).
+Full viewport height (100vh).
+Light border for separation.
+
+5. ELEMENT: header (Top Banner)
+
+Purpose: Displays dashboard title and branding.
+
+Properties & Effects:
+Green background (#4caf50) with white text for high contrast.
+Padding for visual spacing.
+
+6. ELEMENT: aside (Sidebar Navigation)
+
+Purpose: Displays navigation menu with links.
+
+Properties & Effects:
+Light gray background (#f4f4f4) in light mode.
+Padding for internal spacing.
+Links styled purple, with no underlines.
+
+7. ELEMENT: main (Main Content Area)
+
+Purpose: Holds welcome text, charts, or reports.
+
+Properties & Effects:
+White background in light mode.
+Padding for text comfort.
+Text in dark gray for readability.
+
+8. ELEMENT: footer (Bottom Bar)
+
+Purpose: Displays copyright.
+
+Properties & Effects:
+Matches header color scheme.
+Centered white text with padding.
+
+9. DARK MODE OVERRIDES
+
+Purpose: Switches entire dashboard color scheme when theme toggle is checked.
+
+Properties & Effects:
+Dark background (#121212) for .dashboard.
+Darker grays for header, footer, and aside.
+Light text (white) for readability.
+Purple-tinted sidebar links in dark mode for accent.
+
+LEARNING OUTCOMES
+How to structure a dashboard layout using CSS Grid.
+How to implement dark mode toggle using a hidden checkbox and CSS sibling selectors.
+How to style navigation menus for both light and dark themes.
+How to create a consistent color scheme across multiple layout components.
+How to test interactive UI features (like theme toggles) and ensure accessibility.
