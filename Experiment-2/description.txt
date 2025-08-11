@@ -1,0 +1,95 @@
+SIMPLE BANK UI PROJECT TEST CASES & VALIDATIONS
+
+1. FEATURE: Balance Display
+
+Requirement:
+The balance area should display the current account balance (default: $0).
+Value should update after deposit or withdrawal actions (requires JavaScript in a functional version).
+
+Valid Test Cases:
+Initial load → balance shows $0.
+After deposit → amount increases correctly.
+After withdrawal → amount decreases correctly (if enough funds).
+
+Invalid Test Cases:
+Negative balance allowed → should be prevented.
+Balance display not updating after transaction → bug in logic.
+
+2. FEATURE: Deposit Button
+
+Requirement:
+Adds a specified amount to the balance.
+
+Valid Test Cases:
+Clicking deposit → balance increases by entered amount.
+
+Invalid Test Cases:
+Non-numeric deposit value → should be rejected.
+No amount entered → should not process transaction.
+
+3. FEATURE: Withdraw Button
+
+Requirement:
+Deducts a specified amount from the balance.
+
+Valid Test Cases:
+Clicking withdraw → balance decreases by entered amount (if funds available).
+
+Invalid Test Cases:
+Withdrawal greater than balance → should reject or show an error.
+Non-numeric withdrawal value → should be rejected.
+
+4. FORM SUBMISSION: (Not applicable — No forms in this project)
+
+CSS STYLING BREAKDOWN: A STRUCTURED OVERVIEW
+  
+1. ELEMENT: body (Global Page Styling)
+Purpose: Sets the background, typography, and page alignment.
+Properties & Effects:
+Light gray background for neutral appearance.
+Arial sans-serif font for clean readability.
+Text centered horizontally with text-align: center.
+padding-top: 100px; vertically spaces content from the top.
+
+2. ELEMENT: .box (Main Container)
+Purpose: Wraps the balance and buttons in a neat card layout.
+Properties & Effects:
+White background for contrast against the page.
+Fixed width (250px) to keep a compact design.
+margin: auto; centers horizontally.
+Internal padding for breathing space.
+Rounded corners with border-radius: 10px.
+Soft drop shadow for depth.
+
+3. ELEMENT: .balance (Balance Display)
+Purpose: Shows the current account balance.
+Properties & Effects:
+Larger font size (24px) for emphasis.
+Green text to indicate positive balance.
+Margin below to separate it from buttons.
+
+4. ELEMENT: button (General Button Styling)
+Purpose: Provides consistent styling for both Deposit and Withdraw buttons.
+Properties & Effects:
+Full width (width: 100%) for easy click/tap.
+Padding for comfort and better clickability.
+White text on colored background for contrast.
+Rounded corners (border-radius: 5px).
+Margin between buttons to avoid crowding.
+Cursor changes to pointer for interactivity.
+
+5. ELEMENT: .deposit (Deposit Button)
+Purpose: Distinguishes the deposit action visually.
+Property: background-color: green; → reinforces positive transaction meaning.
+
+6. ELEMENT: .withdraw (Withdraw Button)
+Purpose: Distinguishes the withdrawal action visually.
+Property: background-color: red; → signals caution or deduction.
+
+LEARNING OUTCOMES
+  
+How to create a simple banking interface layout using HTML & CSS.
+How to design action buttons with distnct color coding for clarity.
+How to center and style a container with shadows and rounded corners.
+How to set up balance display styling for readability and emphasis.
+How to plan transaction-related test cases for a functional UI.
