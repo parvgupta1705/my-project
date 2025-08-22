@@ -1,29 +1,36 @@
-JavaScript Explanation (Live Character Counter Project)
+JavaScript Explanation – Dynamic Product Filter
 
-1. DOM Selection
+1. Selecting Elements
 
-document.getElementById("textInput")
-Finds the <textarea> element using its id="textInput".
+const filter = document.getElementById('categoryFilter');
+→ Selects the dropdown element (<select>) so we can track when the user changes the category.
 
-document.getElementById("charCount")
-Finds the <span> element where the character count will be shown.
-
-This step connects JavaScript to the HTML elements we want to work with.
+const products = document.querySelectorAll('.product');
+→ Selects all product items (divs with the class .product) to show or hide them later.
 
 2. Event Listener
 
-textInput.addEventListener("input", function() { ... })
-Listens for the "input" event, which occurs whenever the user types, deletes, or pastes something inside the <textarea>.
+filter.addEventListener('change', () => { ... });
+→ Adds a listener that waits for the dropdown value to change.
+→ Every time the user selects a new category (Clothing, Electronics, Books, or All), the code inside will run.
 
-This ensures that the character count updates live while typing.
+3. Getting Selected Value
 
-3. Updating Character Count
+const selected = filter.value;
+→ Stores the chosen category (like "clothing", "electronics", "books", or "all").
 
-textInput.value.length
-.value gives the current text typed inside the <textarea>.
-.length counts how many characters are present in that text.
+4. Filtering Logic
 
-charCount.textContent = textInput.value.length;
-Changes the content of <span id="charCount"> to display the updated character count.
+products.forEach(product => { ... });
+→ Loops through every product in the list.
 
-This is how the number of characters is shown dynamically to the user.
+Inside the loop:
+
+if (selected === 'all' || product.dataset.category === selected)
+→ Checks whether the chosen category matches the product’s data-category (like "clothing") OR if "all" is selected.
+
+product.classList.remove('hidden');
+→ Shows the product by removing the CSS class .hidden.
+
+else { product.classList.add('hidden'); }
+→ Hides products that do not match by adding the .hidden class (which has display: none;).
