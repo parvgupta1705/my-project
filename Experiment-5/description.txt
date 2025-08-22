@@ -1,0 +1,29 @@
+JavaScript Explanation (Live Character Counter Project)
+
+1. DOM Selection
+
+document.getElementById("textInput")
+Finds the <textarea> element using its id="textInput".
+
+document.getElementById("charCount")
+Finds the <span> element where the character count will be shown.
+
+This step connects JavaScript to the HTML elements we want to work with.
+
+2. Event Listener
+
+textInput.addEventListener("input", function() { ... })
+Listens for the "input" event, which occurs whenever the user types, deletes, or pastes something inside the <textarea>.
+
+This ensures that the character count updates live while typing.
+
+3. Updating Character Count
+
+textInput.value.length
+.value gives the current text typed inside the <textarea>.
+.length counts how many characters are present in that text.
+
+charCount.textContent = textInput.value.length;
+Changes the content of <span id="charCount"> to display the updated character count.
+
+This is how the number of characters is shown dynamically to the user.
