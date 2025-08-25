@@ -1,0 +1,50 @@
+JavaScript Explanation – SVG Drawing Tool
+  
+1. Element Selection
+  
+const svg = document.getElementById("drawingArea");
+→ Selects the <svg> element where drawing will happen.
+let drawing = false;
+→ A flag (boolean) that tracks whether the user is currently drawing (mouse pressed down).
+let polyline = null;
+→ Holds the reference to the shape being drawn. Each new drawing creates a new polyline.
+
+2. Mouse Down Event
+  
+svg.addEventListener("mousedown", (e) => { ... });
+→ Triggered when the user presses the mouse button inside the SVG area.
+  
+Inside the function:
+drawing = true; → Activates drawing mode.
+const point = getPoint(e); → Gets the exact mouse coordinates inside the SVG.
+polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+→ Creates a new polyline element (special SVG shape) to store the user’s drawn path.
+First point (point.x, point.y) is added to the polyline’s points attribute.
+
+Finally, the polyline is added to the SVG.
+
+3. Mouse Move Event
+svg.addEventListener("mousemove", (e) => { ... });
+→ Runs whenever the mouse is moved inside the SVG area.
+
+Inside the function:
+If drawing is false, it exits (no drawing unless mouse is pressed).
+Gets the new point (getPoint(e)).
+Takes the current points from the polyline and appends the new coordinates.
+Updates the polyline so it looks like a freehand drawing.
+
+4. Mouse Up Event
+
+svg.addEventListener("mouseup", () => { ... });
+→ Triggered when the user releases the mouse button.
+
+Inside the function:
+drawing = false; → Stops drawing mode.
+polyline = null; → Ends the current drawing; ready for the next one.
+
+5. Helper Function
+
+function getPoint(evt) { ... }
+→ Converts mouse event coordinates (clientX, clientY) into SVG-local coordinates.
+→ Uses getBoundingClientRect() to calculate position relative to the SVG element.
+→ Returns { x, y } object with correct coordinates for drawing.
