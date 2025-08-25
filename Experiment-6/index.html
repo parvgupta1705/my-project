@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG Drawing Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      border: 1px solid black;
+      width: 600px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    svg {
+      border: 1px solid black;
+      background-color: #f9f9f9;
+      width: 100%;
+      height: 400px;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <b>SVG Drawing Tool</b>
+    <svg id="drawingArea"></svg>
+  </div>
+
+  <script>
+    const svg = document.getElementById("drawingArea");
+    let drawing = false;
+    let polyline = null;
+
+    svg.addEventListener("mousedown", (e) => {
+      drawing = true;
+      const point = getPoint(e);
+      polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+      polyline.setAttribute("stroke", "blue");
+      polyline.setAttribute("stroke-width", 2);
+      polyline.setAttribute("fill", "none");
+      polyline.setAttribute("points", `${point.x},${point.y}`);
+      svg.appendChild(polyline);
+    });
+
+    svg.addEventListener("mousemove", (e) => {
+      if (!drawing) return;
+      const point = getPoint(e);
+      let points = polyline.getAttribute("points");
+      points += ` ${point.x},${point.y}`;
+      polyline.setAttribute("points", points);
+    });
+
+    svg.addEventListener("mouseup", () => {
+      drawing = false;
+      polyline = null;
+    });
+
+    function getPoint(evt) {
+      const rect = svg.getBoundingClientRect();
+      return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+      };
+    }
+  </script>
+</body>
+</html>
