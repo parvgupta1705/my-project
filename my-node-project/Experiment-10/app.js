@@ -30,7 +30,7 @@ function showMenu() {
         rl.close();
         break;
       default:
-        console.log("❌ Invalid choice, please try again.");
+        console.log("Invalid choice, please try again.");
         showMenu();
     }
   });
@@ -70,7 +70,7 @@ function removeEmployee() {
         `Employee ${removed[0].name} (ID: ${removed[0].id}) removed successfully.`
       );
     } else {
-      console.log("❌ Employee not found.");
+      console.log("Employee not found.");
     }
     showMenu();
   });
