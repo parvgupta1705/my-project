@@ -1,0 +1,49 @@
+/* Reset / global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.patient-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.patient-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 220px;
+}
+
+.patient-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+/* Remove button styling */
+.patient-card button {
+  background-color: rgb(255, 0, 51);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
