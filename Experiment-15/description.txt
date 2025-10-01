@@ -1,0 +1,27 @@
+Title: E-commerce Catalog with Nested Variants in MongoDB
+
+1) System Overview
+- server.js connects to local MongoDB at mongodb://localhost:27017/mydb, mounts routes at /api/products, and logs available endpoints.
+- Routes: routes/products.js | Model: models/Product.js
+- Test APIs with Postman; inspect documents with MongoDB Compass.
+
+2) Data Structure
+- Variant Schema (no _id): color (String, required), size (String, required), stock (Number, required, min 0)
+- Product Schema: name (String, required, trimmed, unique), price (Number, required, min 0), category (String, required, indexed), description (String, default), variants ([VariantSchema], min 1), timestamps: true
+- Nested variants group related info; category index improves query speed; schema validation prevents empty variant lists.
+
+3) Endpoints & Functionality
+- POST /seed: deletes existing products, inserts 5 new sample products → {status: "success", message: "5 products seeded successfully."}
+- GET /: returns all products sorted alphabetically by name
+- GET /filter?category=<category>: returns name, price, category, variants for that category
+- GET /variants/:color: aggregation pipeline ($unwind → $match → $project) returns product name, price, and matched variant; case-insensitive on color
+
+4) Testing & Implementation Notes
+- Start server: node server.js
+- Postman:
+  - POST /seed → 5 products inserted
+  - GET / → list all products
+  - GET /filter?category=Apparel → only Apparel products
+  - GET /variants/Red → all products with Red variant
+- MongoDB Compass: open mydb.products to inspect documents
+- Implementation details: insertMany + deleteMany for seeding, find + select for smaller payloads, aggregation for nested arrays, validation for unique names & non-empty variants, proper HTTP error codes (400, 404, 500)
